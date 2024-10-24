@@ -1,0 +1,165 @@
+cd nas/DMD_PI_nets/SVAE/svea-vit/
+conda activate svea2
+nohup python3 src/train.py --seed 1 --device_id 0 --batch_size 512 --run_name bs512 &
+nohup python3 src/train.py --seed 1 --device_id 1 --batch_size 1024 --run_name bs1024 &
+nohup python3 src/train.py --seed 1 --device_id 2 --batch_size 2056  --run_name bs2056 &
+
+
+
+cd nas/DMD_PI_nets/SVAE/svea-vit/
+conda activate svea2
+nohup python3 src/train.py --seed 1 --device_id 0 --batch_size 512 --run_name bs512hd64_run2 &
+
+
+cd nas/DMD_PI_nets/SVAE/svea-vit/
+nohup python3 src/train.py --seed 1 --device_id 0 --batch_size 512 --run_name bs512hd64_run2 &
+
+
+cd nas/DMD_PI_nets/SVAE/svea-vit/
+conda activate svea2
+python3 src/eval2.py --seed 2 --device_id 1  --run_name bs512hd64_run2 --hidden_dim 64 --eval_mode original
+
+
+cd nas/DMD_PI_nets/SVAE/svea-vit/
+conda env create -f setup/conda.yaml
+conda activate svea-train
+sh setup/install_envs.sh
+
+
+
+cd nas/DMD_PI_nets/SVAE/svea-vit/
+conda activate svea2
+python3 src/eval2.py --seed 2 --device_id 0  --run_name bs512hd64_run2 --hidden_dim 64 --eval_mode original
+
+
+cd nas/DMD_PI_nets/SVAE/svea-vit/
+conda activate svea2
+python3 src/eval2.py --seed 1 --device_id 0  --run_name CNNbs128 --eval_mode original
+
+
+cd nas/DMD_PI_nets/SVAE/svea-vit2/
+conda activate svea2
+python3 src/eval2.py --seed 1 --device_id 1 --algorithm sac --run_name CNNbs128 --eval_mode original
+
+cd nas/DMD_PI_nets/SVAE/svea-vit/
+python3 src/eval2.py --seed 1 --device_id 0 --algorithm sac --run_name CNNbs128 --eval_mode original
+
+
+cd nas/DMD_PI_nets/SVAE/dmcontrol-generalization-benchmark/
+ python3 src/train.py  --algorithm sac   --seed 0
+ 
+
+ 
+cd nas/DMD_PI_nets/SVAE/svea-vit/
+conda activate svea2
+python3 src/train.py --seed 1 --device_id 0 --batch_size 128 --run_name CNN_CiL_bs128_hd64  --algorithm sac  
+ 
+cd nas/DMD_PI_nets/SVAE/svea-vit/
+conda activate svea2
+python3 src/train.py --seed 1 --device_id 2 --batch_size 128 --run_name CNN_CiL_bs128_hd64_mult1 --hidden_dim 64  --algorithm sac  
+
+
+cd nas/DMD_PI_nets/SVAE/svea-vit2/
+conda activate svea2
+python3 src/train.py --domain_name cheetah --task_name run  --seed 2 --device_id 2 --batch_size 128 --run_name CNN_CiL_newt --hidden_dim 64  --algorithm sac  
+
+cd nas/DMD_PI_nets/SVAE/svea-vit2/
+conda activate svea2
+python3 src/train.py --domain_name walker --task_name walk  --seed 2 --device_id 0 --batch_size 128 --run_name CNN_CiL_newt --hidden_dim 64  --algorithm sac  
+
+
+
+cd nas/DMD_PI_nets/SVAE/svea-vit/
+conda activate svea2
+python3 src/train.py --domain_name walker --task_name walk  --seed 1 --device_id 0 --batch_size 128 --run_name CNN_CiL_newta_loc --hidden_dim 64  --algorithm sac   
+
+
+cd nas/DMD_PI_nets/SVAE/svea-vit/
+conda activate svea2
+nohup python3 src/train.py --domain_name walker --task_name walk  --seed 1 --device_id 0 --batch_size 128 --run_name CNN_CiL_newta_loc2 --hidden_dim 64  --algorithm sac   &
+nohup python3 src/train.py --domain_name cheetah --task_name run  --seed 1 --device_id 1 --batch_size 128 --run_name CNN_CiL_newta_loc2 --hidden_dim 64  --algorithm sac  &
+nohup python3 src/train.py --domain_name walker --task_name walk  --seed 2 --device_id 2 --batch_size 128 --run_name CNN_CiL_newta_loc2 --hidden_dim 64  --algorithm sac   &
+
+cd nas/DMD_PI_nets/SVAE/svea-vit/
+conda activate svea2
+nohup python3 src/train.py --domain_name cheetah --task_name run  --seed 2 --device_id 4 --batch_size 128 --run_name CNN_CiL_newta_loc2 --hidden_dim 64  --algorithm sac  &
+
+
+cd nas/DMD_PI_nets/SVAE/svea-vit2a/
+conda activate svea2
+ python3 src/train.py --domain_name walker --task_name walk  --seed 1 --device_id 3 --batch_size 128 --run_name CNN_CiL_newt_emd8 --hidden_dim 64  --algorithm sac   
+
+
+
+cd nas/DMD_PI_nets/SVAE/svea-vit/
+conda activate svea2
+python3 src/train.py --domain_name walker --task_name walk  --seed 1 --device_id 0 --batch_size 128 --run_name CNN_CiL_newtc_loc2 --hidden_dim 64  --algorithm sac   
+
+
+cd nas/DMD_PI_nets/SVAE/svea-vit/
+conda activate svea2
+nohup python3 src/train.py --domain_name walker --task_name walk  --seed 1 --device_id 0 --batch_size 128 --run_name CNN_CiL_newtc_loc2 --hidden_dim 64  --algorithm sac   &
+nohup python3 src/train.py --domain_name cheetah --task_name run  --seed 1 --device_id 1 --batch_size 128 --run_name CNN_CiL_newtc_loc2 --hidden_dim 64  --algorithm sac  &
+nohup python3 src/train.py --domain_name walker --task_name walk  --seed 2 --device_id 2 --batch_size 128 --run_name CNN_CiL_newtc_loc2 --hidden_dim 64  --algorithm sac   &
+
+
+
+cd nas/DMD_PI_nets/SVAE/svea-vit2b/
+conda activate svea2
+ python3 src/train.py --domain_name walker --task_name walk  --seed 1 --device_id 3 --batch_size 128 --run_name CNN_CiL_newt_2b --hidden_dim 64  --algorithm sac   
+
+
+cd nas/DMD_PI_nets/SVAE/svea-vit/
+conda activate svea2
+python3 src/test.py --domain_name cheetah --task_name run  --device_id 0 --batch_size 128 --run_name CNN_CiL_newtc_loc2 --hidden_dim 64     --algorithm sac   
+
+
+cd nas/DMD_PI_nets/SVAE/svea-vit/
+conda activate svea2
+python3 src/test.py --domain_name cheetah --task_name run  --device_id 0 --batch_size 128 --run_name CNN_CiL_newtc_loc2 --hidden_dim 64     --algorithm sac  --eval_mode video_easy 
+
+
+cd nas/DMD_PI_nets/SVAE/svea-vit/
+conda activate svea2
+python3 src/test.py --domain_name walker --task_name walk  --device_id 0 --batch_size 128 --run_name CNN_CiL_newtc_loc2 --hidden_dim 64     --algorithm sac  --eval_mode video_easy 
+
+
+
+
+cd nas/DMD_PI_nets/SVAE/svea-vit/
+conda activate svea2
+nohup python3 src/train.py --domain_name cheetah --task_name run  --seed 1 --device_id 5 --batch_size 128 --run_name CNN_CiL_newtb_loc2 --hidden_dim 64  --algorithm sac  &
+nohup python3 src/train.py --domain_name walker --task_name walk  --seed 2 --device_id 6 --batch_size 128 --run_name CNN_CiL_newtb_loc2 --hidden_dim 64  --algorithm sac   &
+nohup python3 src/train.py --domain_name cheetah --task_name run  --seed 2 --device_id 7 --batch_size 128 --run_name CNN_CiL_newtb_loc2 --hidden_dim 64  --algorithm sac  &
+
+
+
+cd nas/DMD_PI_nets/SVAE/svea-vit0/
+conda activate svea2
+python3 src/train.py --domain_name walker --task_name walk  --seed 1 --device_id 3 --batch_size 128 --run_name CNN_base --hidden_dim 64  --algorithm sac   
+
+cd nas/DMD_PI_nets/SVAE/svea-vit0/
+conda activate svea2
+nohup python3 src/train.py --domain_name walker --task_name walk  --seed 1 --device_id 1 --batch_size 128 --run_name CNN_base_new2 --hidden_dim 64  --algorithm sac   &
+nohup python3 src/train.py --domain_name cheetah --task_name run  --seed 1 --device_id 1 --batch_size 128 --run_name CNN_base_new2 --hidden_dim 64  --algorithm sac  &
+nohup python3 src/train.py --domain_name walker --task_name walk  --seed 2 --device_id 1 --batch_size 128 --run_name CNN_base_new2 --hidden_dim 64  --algorithm sac   &
+nohup python3 src/train.py --domain_name cheetah --task_name run  --seed 2 --device_id 1 --batch_size 128 --run_name CNN_base_new2 --hidden_dim 64  --algorithm sac  &
+
+python3 src/train.py --domain_name cheetah --task_name run  --seed 1 --device_id 2 --batch_size 128 --run_name CNN_CiL_bs128_hd64_r4b --hidden_dim 64  --algorithm sac  
+
+
+
+cd nas/DMD_PI_nets/GTG
+conda activate GTG
+python3 src/train.py --seed 1 --device_id 0 --batch_size 128 --run_name CNN_CiLbs128_hd64 --hidden_dim 64  --algorithm sac  
+
+cd nas/DMD_PI_nets/GTG
+conda activate GTG
+python3 visualize_env.py --env MiniGrid-LavaCrossingS9N1-v0
+
+
+cd nas/DMD_PI_nets/GTG
+conda activate GTG
+nohup python3 monobeast_hyper_momo.py --env MiniGrid-LavaCrossingS9N1-v0 --agent CNN  --xpid CNN_river  --device_id 0
+
+--num_filters 16
